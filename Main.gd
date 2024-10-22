@@ -5,11 +5,12 @@ var score
 
 func _ready():
 	randomize()
-	new_game()
+
 	
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
+	$Start.show()
 func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
@@ -37,7 +38,14 @@ func _on_MobTimer_timeout():
 
 func _on_ScoreTimer_timeout():
 	score += 1
+	$Label.text= "Score: " + str(score)
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
+
+func _on_Start_pressed():
+	new_game()
+	$Start.hide()
+	$Label.text= "Score: 0"
+	
