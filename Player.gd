@@ -36,7 +36,7 @@ func _process(delta):
 	position.y = clamp(position.y, 0, screen_size.y)
 
 
-func _on_Player_body_entered(body):
+func _on_Player_body_entered(_body):
 	hide() # El jugador desapareix després de ser impactat.
 	emit_signal("hit")
 	# S'ha d'ajornar, ja que no podem canviar les propietats físiques en una crida de retorn de física.
